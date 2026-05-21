@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11: Imágenes display vs visibility</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="distr">
+        <header>
+            <h1>Ejercicio 11: Imágenes display vs visibility</h1>
+        </header>
+        <main>
+            <section class="ejercicio-card">
+                <div class="form-row">
+                    <button type="button" id="btnOcultarDisplay">Ocultar (display:none)</button>
+                    <button type="button" id="btnOcultarVisibility">Ocultar (visibility:hidden)</button>
+                    <button type="button" id="btnMostrarImagenes">Mostrar imágenes</button>
+                </div>
+                <div class="image-grid">
+                    <img src="./img/katnis.jpg" alt="Imagen 1">
+                    <img src="./img/libros.jpg" alt="Imagen 2">
+                    <img src="./img/peliculas.jpg" alt="Imagen 3">
+                </div>
+                <p class="resultado">Prueba las dos formas de ocultar imágenes y observa la diferencia.</p>
+                <a href="index.html">Volver al inicio</a>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnOcultarDisplay = document.getElementById('btnOcultarDisplay');
+            const btnOcultarVisibility = document.getElementById('btnOcultarVisibility');
+            const btnMostrarImagenes = document.getElementById('btnMostrarImagenes');
+            const imagenes = document.getElementsByTagName('img');
+
+            btnOcultarDisplay.addEventListener('click', () => {
+                for (let i = 0; i < imagenes.length; i += 1) {
+                    imagenes[i].style.display = 'none';
+                }
+            });
+
+            btnOcultarVisibility.addEventListener('click', () => {
+                for (let i = 0; i < imagenes.length; i += 1) {
+                    imagenes[i].style.visibility = 'hidden';
+                    imagenes[i].style.display = '';
+                }
+            });
+
+            btnMostrarImagenes.addEventListener('click', () => {
+                for (let i = 0; i < imagenes.length; i += 1) {
+                    imagenes[i].style.display = '';
+                    imagenes[i].style.visibility = 'visible';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+

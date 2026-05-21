@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActJS - Ejercicios JavaScript</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div class="distr">
+        <header>
+            <h1>PANEM ET CIRCENSES</h1>
+            <p id="headerSaludo" class="header-saludo"></p>
+            </header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="libros.html">Libros</a></li>
+                <li><a href="peliculas.html">Películas</a></li>
+                <li><a href="personajes.html">Personajes</a></li>
+                <li><a href="actjs.html">ActJS</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="content">
+                <h3>Actividades JavaScript</h3>
+                <h1>ActJS</h1>
+                <h2>Ejercicios distribuidos en la carpeta act</h2>
+                <figure class="hero-image">
+                    <img src="../img/katnis.jpg" alt="Ejercicios JavaScript" loading="lazy">
+                </figure>
+            </div>
+            <div class="explorar">
+                <article class="item">
+                    <p class="card-tag">Ejercicio 1</p>
+                    <h3 class="card-title">Saludo</h3>
+                    <p class="card-excerpt">Introduce tu nombre y muestra un saludo.</p>
+                    <a href="../act/js1.html">Abrir</a>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Ejercicio 2</p>
+                    <h3 class="card-title">Cambiar texto</h3>
+                    <p class="card-excerpt">Cambia el texto de un párrafo con un botón.</p>
+                    <a href="../act/js2.html">Abrir</a>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Ejercicio 3</p>
+                    <h3 class="card-title">Color de fondo</h3>
+                    <p class="card-excerpt">Cambia el color de fondo según un valor ingresado.</p>
+                    <a href="../act/js3.html">Abrir</a>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Ejercicio 4</p>
+                    <h3 class="card-title">Perímetro</h3>
+                    <p class="card-excerpt">Calcula la base, altura y perímetro de un rectángulo.</p>
+                    <a href="../act/js4.html">Abrir</a>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Ejercicio 5</p>
+                    <h3 class="card-title">Contador</h3>
+                    <p class="card-excerpt">Incrementa, decrementa y guarda el valor en el navegador.</p>
+                    <a href="../act/js5.html">Abrir</a>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Ejercicio 6</p>
+                    <h3 class="card-title">Parque</h3>
+                    <p class="card-excerpt">Evalúa si una persona puede entrar al parque.</p>
+                    <a href="../act/js6.html">Abrir</a>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Ejercicio 8</p>
+                    <h3 class="card-title">Tabla</h3>
+                    <p class="card-excerpt">Genera la tabla de multiplicar de un número.</p>
+                    <a href="../act/js8.html">Abrir</a>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Ejercicio 8.1</p>
+                    <h3 class="card-title">Triángulo</h3>
+                    <p class="card-excerpt">Imprime un triángulo de asteriscos según n filas.</p>
+                    <a href="../act/js8_1.html">Abrir</a>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Ejercicio 9</p>
+                    <h3 class="card-title">Aleatorio</h3>
+                    <p class="card-excerpt">Genera un número aleatorio del 1 al 10.</p>
+                    <a href="../act/js9.html">Abrir</a>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Ejercicio 10</p>
+                    <h3 class="card-title">Adivina</h3>
+                    <p class="card-excerpt">Adivina el número generado en 5 intentos.</p>
+                    <a href="../act/js10.html">Abrir</a>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Ejercicio 11</p>
+                    <h3 class="card-title">Imágenes</h3>
+                    <p class="card-excerpt">Compara visibility y display con imágenes.</p>
+                    <a href="../act/js11.html">Abrir</a>
+                </article>
+            </div>
+        </main>
+        <div class="newsletter">
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Suscríbete a nuestro boletín</legend>
+                    <p>Recibe noticias, novedades y recomendaciones sobre <strong>Los Juegos del Hambre</strong>.</p>
+                    <div class="form-row">
+                        <label for="newsletter-name">Nombre</label>
+                        <input type="text" id="newsletter-name" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="newsletter-email">Correo electrónico</label>
+                        <input type="email" id="newsletter-email" name="email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <button type="submit">Suscribirse</button>
+                </fieldset>
+            </form>
+        </div>
+        <footer>
+            <p class="autor">Daniel González Morales</p>
+            <p id="footerFecha" class="footer-fecha"></p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const hour = now.getHours();
+            let greeting = 'Buenas noches';
+            if (hour >= 8 && hour < 14) {
+                greeting = 'Buenos días';
+            } else if (hour >= 14 && hour < 20) {
+                greeting = 'Buenas tardes';
+            }
+            const formattedDate = now.toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+            document.getElementById('headerSaludo').textContent = greeting;
+            document.getElementById('footerFecha').textContent = formattedDate;
+        });
+    </script>
+</body>
+</html>
+

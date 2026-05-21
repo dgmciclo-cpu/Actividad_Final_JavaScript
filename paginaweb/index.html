@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panem et Circenses - Los Juegos del Hambre</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="distr">
+        <header>
+            <h1>PANEM ET CIRCENSES</h1>
+            <p id="headerSaludo" class="header-saludo"></p>
+        </header>
+        <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="pages/libros.html">Libros</a></li>
+            <li><a href="pages/peliculas.html">Películas</a></li>
+            <li><a href="pages/personajes.html">Personajes</a></li>
+            <li><a href="pages/actjs.html">ActJS</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="content" class="content">
+            <h3>Bienvenidos a Panem los · 12 distritos</h3>
+            <h1>Los Juegos del Hambre</h1>
+            <h2>La Saga que encendio la llama</h2>
+            <figure class="hero-image">
+                <img src="./img/katnis.jpg" alt="Los Juegos del Hambre - Portada" loading="lazy">
+            </figure>
+        </div>
+        <div id="explorar" class="explorar">
+            <article class="item">
+                <p class="card-tag">Libros</p>
+                <h3 class="card-title">Sinsajo: el final que lo cambia todo</h3>
+                <p class="card-excerpt">El tercer libro rompe las reglas de la trilogía y nos enfrenta a la guerra de verdad, sin héroes perfectos.</p>
+                <p class="card-meta">8 min · Libros</p>
+            </article>
+            <article class="item">
+                <p class="card-tag">Personajes</p>
+                <h3 class="card-title">Katniss Everdeen</h3>
+                <p class="card-excerpt">La chica que se convierte en el símbolo de la resistencia contra el Capitolio.</p>
+                <p class="card-meta">10 min · Personajes</p>
+            </article>
+            <article class="item">
+                <p class="card-tag">Precuelas</p>
+                <h3 class="card-title">Balada de pájaros cantores: ¿necesitábamos saber el origen de Snow?</h3>
+                <p class="card-excerpt">La precuela que humaniza al villano más frío de la saga genera preguntas incómodas sobre la empatía narrativa.</p>
+                <p class="card-meta">10 min · Precuelas</p>
+            </article>
+        </div>
+    </main>
+    <button id="openNewsletter" class="newsletter-open-button">Suscribirse al boletín</button>
+    <div class="newsletter" aria-hidden="true">
+        <form action="#" method="post">
+            <fieldset>
+                <button type="button" id="closeNewsletter" class="newsletter-close" aria-label="Cerrar boletín">×</button>
+                <legend>Suscríbete a nuestro boletín</legend>
+                <p>Recibe noticias, novedades y recomendaciones sobre <strong>Los Juegos del Hambre</strong>.</p>
+                <div class="form-row">
+                    <label for="newsletter-name">Nombre</label>
+                    <input type="text" id="newsletter-name" name="nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-row">
+                    <label for="newsletter-email">Correo electrónico</label>
+                    <input type="email" id="newsletter-email" name="email" placeholder="ejemplo@correo.com" required>
+                </div>
+                <button type="submit">Suscribirse</button>
+            </fieldset>
+        </form>
+    </div>
+    <footer>
+        <p class="autor">Daniel González Morales</p>
+        <p id="footerFecha" class="footer-fecha"></p>
+    </footer>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const now = new Date();
+        const hour = now.getHours();
+        let greeting = 'Buenas noches';
+        if (hour >= 8 && hour < 14) {
+            greeting = 'Buenos días';
+        } else if (hour >= 14 && hour < 20) {
+            greeting = 'Buenas tardes';
+        }
+        const formattedDate = now.toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        document.getElementById('headerSaludo').textContent = greeting;
+        document.getElementById('footerFecha').textContent = formattedDate;
+        const openNewsletter = document.getElementById('openNewsletter');
+        const closeNewsletter = document.getElementById('closeNewsletter');
+        const newsletter = document.querySelector('.newsletter');
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterName = document.getElementById('newsletter-name');
+        const newsletterEmail = document.getElementById('newsletter-email');
+        const newsletterMessage = document.getElementById('newsletterMessage');
+
+        function showNewsletter() {
+            if (!newsletter) return;
+            newsletter.classList.add('active');
+            newsletter.setAttribute('aria-hidden', 'false');
+        }
+
+        function hideNewsletter() {
+            if (!newsletter) return;
+            newsletter.classList.remove('active');
+            newsletter.setAttribute('aria-hidden', 'true');
+        }
+
+        function setNewsletterMessage(text, isError = false) {
+            if (!newsletterMessage) return;
+            newsletterMessage.textContent = text;
+            newsletterMessage.classList.toggle('success', !isError);
+            newsletterMessage.classList.toggle('error', isError);
+        }
+
+        openNewsletter?.addEventListener('click', () => {
+            setNewsletterMessage('');
+            showNewsletter();
+        });
+        closeNewsletter?.addEventListener('click', hideNewsletter);
+        newsletter?.addEventListener('click', (event) => {
+            if (event.target === newsletter) {
+                hideNewsletter();
+            }
+        });
+
+        newsletterForm?.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (!newsletterName.value.trim() || !newsletterEmail.value.trim()) {
+                setNewsletterMessage('Por favor completa todos los campos.', true);
+                return;
+            }
+            if (!newsletterEmail.checkValidity()) {
+                setNewsletterMessage('Introduce un correo electrónico válido.', true);
+                return;
+            }
+            setNewsletterMessage(`Gracias por suscribirte, ${newsletterName.value.trim()}!`);
+            newsletterForm.reset();
+            setTimeout(() => {
+                setNewsletterMessage('');
+                hideNewsletter();
+            }, 2500);
+        });
+    });
+</script>
+</body>
+</html>

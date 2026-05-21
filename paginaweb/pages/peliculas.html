@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Películas - Panem et Circenses</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    
+    <div class="distr">
+        
+        <header>
+            <h1>PANEM ET CIRCENSES</h1>
+            <p id="headerSaludo" class="header-saludo"></p>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="libros.html">Libros</a></li>
+                <li><a href="peliculas.html">Películas</a></li>
+                <li><a href="personajes.html">Personajes</a></li>
+                <li><a href="actjs.html">ActJS</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="content">
+                <h3>Las películas de la saga</h3>
+                <h1>Del libro a la pantalla</h1>
+                <h2>Acción, drama y resistencia</h2>
+                <figure class="hero-image">
+                    <img src="../img/peliculas.jpg" alt="Películas de Los Juegos del Hambre" loading="lazy">
+                </figure>
+            </div>
+            <div class="explorar">
+                <article class="item">
+                    <p class="card-tag">Orden cronológico</p>
+                    <h3 class="card-title">Verlas en el orden correcto</h3>
+                    <p class="card-excerpt">Desde el primer juego hasta la última batalla, siguiendo la historia de Katniss.</p>
+                    <p class="card-meta">9 min · Películas</p>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Actores</p>
+                    <h3 class="card-title">Jennifer Lawrence como Katniss</h3>
+                    <p class="card-excerpt">Una actuación icónica que definió la saga cinematográfica.</p>
+                    <p class="card-meta">8 min · Películas</p>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Adaptación</p>
+                    <h3 class="card-title">Del libro al guion</h3>
+                    <p class="card-excerpt">Cómo se llevó la historia de Suzanne Collins a la gran pantalla.</p>
+                    <p class="card-meta">7 min · Películas</p>
+                </article>
+            </div>
+        </main>
+        <div class="newsletter">
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Suscríbete a nuestro boletín</legend>
+                    <p>Recibe noticias, novedades y recomendaciones sobre <strong>Los Juegos del Hambre</strong>.</p>
+                    <div class="form-row">
+                        <label for="newsletter-name">Nombre</label>
+                        <input type="text" id="newsletter-name" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="newsletter-email">Correo electrónico</label>
+                        <input type="email" id="newsletter-email" name="email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <button type="submit">Suscribirse</button>
+                </fieldset>
+            </form>
+        </div>
+        <footer>
+            <p class="autor">Daniel González Morales</p>
+            <p id="footerFecha" class="footer-fecha"></p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const hour = now.getHours();
+            let greeting = 'Buenas noches';
+            if (hour >= 8 && hour < 14) {
+                greeting = 'Buenos días';
+            } else if (hour >= 14 && hour < 20) {
+                greeting = 'Buenas tardes';
+            }
+            const formattedDate = now.toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+            document.getElementById('headerSaludo').textContent = greeting;
+            document.getElementById('footerFecha').textContent = formattedDate;
+        });
+    </script>
+</body>
+</html>
+

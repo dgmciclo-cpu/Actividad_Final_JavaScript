@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2: Cambiar texto</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="distr">
+        <header>
+            <h1>Ejercicio 2: Cambiar texto</h1>
+        </header>
+        <main>
+            <section class="ejercicio-card">
+                <p id="parrafoCambio">Este texto cambiará al pulsar el botón.</p>
+                <button type="button" id="btnCambiarTexto">Cambiar texto</button>
+                <a href="index.html">Volver al inicio</a>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnCambiarTexto = document.getElementById('btnCambiarTexto');
+            const parrafoCambio = document.getElementById('parrafoCambio');
+
+            btnCambiarTexto.addEventListener('click', () => {
+                parrafoCambio.textContent = 'Has cambiado el texto correctamente. ¡Buen trabajo!';
+            });
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros - Panem et Circenses</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    
+    <div class="distr">
+        
+        <header>
+            <h1>PANEM ET CIRCENSES</h1>
+            <p id="headerSaludo" class="header-saludo"></p>
+            </header>
+        
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="libros.html">Libros</a></li>
+                <li><a href="peliculas.html">Películas</a></li>
+                <li><a href="personajes.html">Personajes</a></li>
+                <li><a href="actjs.html">ActJS</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="content">
+                <h3>Libros de la saga</h3>
+                <h1>La lectura de Panem</h1>
+                <h2>De "El primer juego" a "Sinsajo"</h2>
+                <figure class="hero-image">
+                    <img src="../img/libros.jpg" alt="Libros de Los Juegos del Hambre" loading="lazy">
+                </figure>
+            </div>
+            <div class="explorar">
+                <article class="item">
+                    <p class="card-tag">Trilogía</p>
+                    <h3 class="card-title">Los tres libros principales</h3>
+                    <p class="card-excerpt">Descubre el orden de lectura: Los Juegos del Hambre, En Llamas y Sinsajo.</p>
+                    <p class="card-meta">8 min · Libros</p>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Precuelas</p>
+                    <h3 class="card-title">Balada de pájaros cantores y serpientes</h3>
+                    <p class="card-excerpt">Conoce el origen de Coriolano Snow y el Capitolio antes de Katniss.</p>
+                    <p class="card-meta">10 min · Libros</p>
+                </article>
+                <article class="item">
+                    <p class="card-tag">Recomendación</p>
+                    <h3 class="card-title">Lectura imprescindible</h3>
+                    <p class="card-excerpt">Una saga juvenil que mezcla aventura, política y supervivencia.</p>
+                    <p class="card-meta">7 min · Libros</p>
+                </article>
+            </div>
+        </main>
+        <div class="newsletter">
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Suscríbete a nuestro boletín</legend>
+                    <p>Recibe noticias, novedades y recomendaciones sobre <strong>Los Juegos del Hambre</strong>.</p>
+                    <div class="form-row">
+                        <label for="newsletter-name">Nombre</label>
+                        <input type="text" id="newsletter-name" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="newsletter-email">Correo electrónico</label>
+                        <input type="email" id="newsletter-email" name="email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <button type="submit">Suscribirse</button>
+                </fieldset>
+            </form>
+        </div>
+        <footer>
+            <p class="autor">Daniel González Morales</p>
+            <p id="footerFecha" class="footer-fecha"></p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const hour = now.getHours();
+            let greeting = 'Buenas noches';
+            if (hour >= 8 && hour < 14) {
+                greeting = 'Buenos días';
+            } else if (hour >= 14 && hour < 20) {
+                greeting = 'Buenas tardes';
+            }
+            const formattedDate = now.toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+            document.getElementById('headerSaludo').textContent = greeting;
+            document.getElementById('footerFecha').textContent = formattedDate;
+        });
+    </script>
+</body>
+</html>
+

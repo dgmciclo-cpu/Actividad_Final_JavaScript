@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8: Tabla de multiplicar</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="distr">
+        <header>
+            <h1>Ejercicio 8: Tabla de multiplicar</h1>
+        </header>
+        <main>
+            <section class="ejercicio-card">
+                <input id="numeroTabla" type="number" placeholder="Número" step="1">
+                <button type="button" id="btnGenerarTabla">Generar tabla</button>
+                <div id="lblResultadoTabla" class="resultado"></div>
+                <a href="index.html">Volver al inicio</a>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const numeroTablaInput = document.getElementById('numeroTabla');
+            const btnGenerarTabla = document.getElementById('btnGenerarTabla');
+            const lblResultadoTabla = document.getElementById('lblResultadoTabla');
+
+            btnGenerarTabla.addEventListener('click', () => {
+                const numero = parseInt(numeroTablaInput.value, 10);
+                if (!Number.isFinite(numero)) {
+                    lblResultadoTabla.textContent = 'Introduce un número válido para la tabla.';
+                    return;
+                }
+
+                let resultado = '';
+                for (let i = 1; i <= 10; i += 1) {
+                    resultado += `${numero} x ${i} = ${numero * i}<br>`;
+                }
+                lblResultadoTabla.innerHTML = resultado;
+            });
+        });
+    </script>
+</body>
+</html>
+
+

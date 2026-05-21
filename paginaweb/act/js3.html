@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3: Cambiar color</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="distr">
+        <header>
+            <h1>Ejercicio 3: Cambiar color de fondo</h1>
+        </header>
+        <main>
+            <section class="ejercicio-card">
+                <input id="colorFondo" type="text" placeholder="Ej. red o #3498db">
+                <button type="button" id="btnCambiarColor">Cambiar fondo</button>
+                <p class="resultado">Escribe el color en el campo y cambia el fondo.</p>
+                <a href="index.html">Volver al inicio</a>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnCambiarColor = document.getElementById('btnCambiarColor');
+            const colorInput = document.getElementById('colorFondo');
+
+            btnCambiarColor.addEventListener('click', () => {
+                const color = colorInput.value.trim();
+                if (!color) {
+                    alert('Escribe un nombre o código de color válido.');
+                    return;
+                }
+                document.body.style.backgroundColor = color;
+            });
+        });
+    </script>
+</body>
+</html>
+
+

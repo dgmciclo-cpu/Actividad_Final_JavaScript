@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8.1: Triángulo de asteriscos</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="distr">
+        <header>
+            <h1>Ejercicio 8.1: Triángulo de asteriscos</h1>
+        </header>
+        <main>
+            <section class="ejercicio-card">
+                <input id="numeroTriangulo" type="number" placeholder="Número de filas" min="1" step="1">
+                <button type="button" id="btnGenerarTriangulo">Generar pirámide</button>
+                <div id="trianguloResultado" class="resultado"></div>
+                <a href="index.html">Volver al inicio</a>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const numeroTrianguloInput = document.getElementById('numeroTriangulo');
+            const btnGenerarTriangulo = document.getElementById('btnGenerarTriangulo');
+            const trianguloResultado = document.getElementById('trianguloResultado');
+
+            btnGenerarTriangulo.addEventListener('click', () => {
+                const filas = parseInt(numeroTrianguloInput.value, 10);
+                if (!Number.isFinite(filas) || filas <= 0) {
+                    trianguloResultado.textContent = 'Introduce un número de filas válido.';
+                    return;
+                }
+
+                let resultado = '';
+                for (let fila = 1; fila <= filas; fila += 1) {
+                    resultado += '*'.repeat(fila);
+                    if (fila < filas) {
+                        resultado += '<br>';
+                    }
+                }
+                trianguloResultado.innerHTML = resultado;
+            });
+        });
+    </script>
+</body>
+</html>
+
+

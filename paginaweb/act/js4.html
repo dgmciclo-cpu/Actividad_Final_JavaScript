@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4: Perímetro de un rectángulo</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="distr">
+        <header>
+            <h1>Ejercicio 4: Perímetro de un rectángulo</h1>
+        </header>
+        <main>
+            <section class="ejercicio-card">
+                <div class="form-row">
+                    <label for="rectBase">Base</label>
+                    <input id="rectBase" type="number" placeholder="Base" step="any">
+                </div>
+                <div class="form-row">
+                    <label for="rectAltura">Altura</label>
+                    <input id="rectAltura" type="number" placeholder="Altura" step="any">
+                </div>
+                <button type="button" id="btnCalcularPerimetro">Calcular perímetro</button>
+                <button type="button" id="btnSumarRect">Mostrar suma</button>
+                <button type="button" id="btnMultiplicarRect">Mostrar multiplicación</button>
+                <p id="rectResultado" class="resultado"></p>
+                <a href="index.html">Volver al inicio</a>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const baseInput = document.getElementById('rectBase');
+            const alturaInput = document.getElementById('rectAltura');
+            const btnCalcularPerimetro = document.getElementById('btnCalcularPerimetro');
+            const btnSumarRect = document.getElementById('btnSumarRect');
+            const btnMultiplicarRect = document.getElementById('btnMultiplicarRect');
+            const rectResultado = document.getElementById('rectResultado');
+
+            function obtenerRectangulo() {
+                const base = parseFloat(baseInput.value);
+                const altura = parseFloat(alturaInput.value);
+                return {
+                    base: Number.isFinite(base) ? base : 0,
+                    altura: Number.isFinite(altura) ? altura : 0,
+                };
+            }
+
+            btnCalcularPerimetro.addEventListener('click', () => {
+                const { base, altura } = obtenerRectangulo();
+                const perimetro = 2 * (base + altura);
+                rectResultado.textContent = `Base: ${base}, Altura: ${altura}, Perímetro: ${perimetro}`;
+            });
+
+            btnSumarRect.addEventListener('click', () => {
+                const { base, altura } = obtenerRectangulo();
+                rectResultado.textContent = `Suma: ${base + altura}`;
+            });
+
+            btnMultiplicarRect.addEventListener('click', () => {
+                const { base, altura } = obtenerRectangulo();
+                rectResultado.textContent = `Multiplicación: ${base * altura}`;
+            });
+        });
+    </script>
+</body>
+</html>
+
+

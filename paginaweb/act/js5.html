@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5: Contador</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="distr">
+        <header>
+            <h1>Ejercicio 5: Contador</h1>
+        </header>
+        <main>
+            <section class="ejercicio-card">
+                <div class="contador-panel">
+                    <button type="button" id="btnDecrementar">-</button>
+                    <span id="contadorValor">0</span>
+                    <button type="button" id="btnIncrementar">+</button>
+                </div>
+                <button type="button" id="btnResetContador">Reset</button>
+                <p class="resultado">El valor se guarda en el navegador y persiste después de recargar.</p>
+                <a href="index.html">Volver al inicio</a>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnIncrementar = document.getElementById('btnIncrementar');
+            const btnDecrementar = document.getElementById('btnDecrementar');
+            const btnResetContador = document.getElementById('btnResetContador');
+            const contadorValor = document.getElementById('contadorValor');
+
+            let contador = 0;
+
+            function actualizarContadorUI() {
+                contadorValor.textContent = contador.toString();
+                contadorValor.classList.toggle('positivo', contador > 0);
+                contadorValor.classList.toggle('negativo', contador < 0);
+                if (contador === 0) {
+                    contadorValor.classList.remove('positivo', 'negativo');
+                }
+            }
+
+            function guardarContador() {
+                localStorage.setItem('contador', contador.toString());
+            }
+
+            function iniciarContador() {
+                const valorGuardado = parseInt(localStorage.getItem('contador'), 10);
+                contador = Number.isFinite(valorGuardado) ? valorGuardado : 0;
+                actualizarContadorUI();
+            }
+
+            iniciarContador();
+
+            btnIncrementar.addEventListener('click', () => {
+                contador += 1;
+                actualizarContadorUI();
+                guardarContador();
+            });
+
+            btnDecrementar.addEventListener('click', () => {
+                contador -= 1;
+                actualizarContadorUI();
+                guardarContador();
+            });
+
+            btnResetContador.addEventListener('click', () => {
+                contador = 0;
+                actualizarContadorUI();
+                guardarContador();
+            });
+        });
+    </script>
+</body>
+</html>
+
+

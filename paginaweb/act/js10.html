@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10: Adivina el número</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="distr">
+        <header>
+            <h1>Ejercicio 10: Adivina el número</h1>
+        </header>
+        <main>
+            <section class="ejercicio-card">
+                <input id="numeroAdivina" type="number" placeholder="Adivina entre 1 y 10" min="1" max="10" step="1">
+                <button type="button" id="btnProbarNumero">Probar</button>
+                <button type="button" id="btnResetAdivina">Nuevo juego</button>
+                <p id="resultadoAdivina" class="resultado"></p>
+                <p id="intentosAdivina" class="resultado"></p>
+                <a href="index.html">Volver al inicio</a>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const numeroAdivinaInput = document.getElementById('numeroAdivina');
+            const btnProbarNumero = document.getElementById('btnProbarNumero');
+            const btnResetAdivina = document.getElementById('btnResetAdivina');
+            const resultadoAdivina = document.getElementById('resultadoAdivina');
+            const intentosAdivina = document.getElementById('intentosAdivina');
+
+            let numeroSecreto = Math.floor(Math.random() * 10) + 1;
+            let intentos = 0;
+            let juegoActivo = true;
+
+            function actualizarAdivinaUI() {
+                intentosAdivina.textContent = `Intentos: ${intentos} / 5`;
+            }
+
+            function reiniciarJuego() {
+                numeroSecreto = Math.floor(Math.random() * 10) + 1;
+                intentos = 0;
+                juegoActivo = true;
+                resultadoAdivina.textContent = 'Nuevo juego iniciado. Adivina el número entre 1 y 10.';
+                actualizarAdivinaUI();
+            }
+
+            reiniciarJuego();
+
+            btnProbarNumero.addEventListener('click', () => {
+                if (!juegoActivo) {
+                    resultadoAdivina.textContent = 'Pulsa "Nuevo juego" para comenzar otra vez.';
+                    return;
+                }
+
+                const intento = parseInt(numeroAdivinaInput.value, 10);
+                if (!Number.isFinite(intento) || intento < 1 || intento > 10) {
+                    resultadoAdivina.textContent = 'Introduce un número entre 1 y 10.';
+                    return;
+                }
+
+                intentos += 1;
+                if (intento === numeroSecreto) {
+                    resultadoAdivina.textContent = `¡Correcto! El número era ${numeroSecreto}.`;
+                    juegoActivo = false;
+                } else if (intentos >= 5) {
+                    resultadoAdivina.textContent = `Has agotado los 5 intentos. El número era ${numeroSecreto}.`;
+                    juegoActivo = false;
+                } else if (intento < numeroSecreto) {
+                    resultadoAdivina.textContent = 'El número es mayor.';
+                } else {
+                    resultadoAdivina.textContent = 'El número es menor.';
+                }
+                actualizarAdivinaUI();
+            });
+
+            btnResetAdivina.addEventListener('click', reiniciarJuego);
+        });
+    </script>
+</body>
+</html>
+
+
